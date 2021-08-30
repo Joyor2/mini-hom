@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>2021 MINI HOMEPAGE</title>
+    <link rel="stylesheet" href="./static/layout.css" />
+    <link rel="stylesheet" href="./static/font.css" />
+    <link rel="stylesheet" href="./static/diary.css" />
+  </head>
+  <body>
+    <div class="bookcover">
+      <div class="bookdot">
+        <div class="page">
+          <div class="profile-container">
+            <div class="header profile-title font-neo">
+              TODAY<span class="color-red"> 28</span> | TOTAL 234918
+            </div>
+            <div class="box profile-box">
+              <div class="profile-image">
+                <img
+                  class="profile-image-img"
+                  src="./static/images/profile.jfif"
+                  alt="프로필 이미지"
+                />
+              </div>
+              <div class="profile-text font-kyobohand">
+                내가 알파카로 보이는가? 내가 정말 알파카인가?
+                <br /><br />퉤엣
+              </div>
+              <div class="profile-username font-kyobohand">
+                <span style="color: #0f1b5c">파카댁</span>
+              </div>
+              <div class="profile-dropdown">
+                <div class="dropdown-btn">
+                  <div class="dropdown-title">파도타기</div>
+                  <div class="triangle-down"></div>
+                </div>
+                <div class="dropdown-content">
+                  <a href="#" target="_blank">마이 블로그</a>
+                  <a href="#" target="_blank">인스타그램</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-container">
+            <div class="header content-title">
+              <div class="content-title-name">알파카댁의 파리카</div>
+              <div class="content-title-url">https://url주소/나중에입력</div>
+            </div>
+            <div class="box content-box">
+              <div class="date-box font-neo">
+                <div class="today">08.24<br />TUE</div>
+                <div class="date-list">
+                  <div class="date">1</div>
+                  <div class="date">2</div>
+                  <div class="date">3</div>
+                  <div class="date">4</div>
+                  <div class="date">5</div>
+                  <div class="date">6</div>
+                  <div class="date"><span class="color-blue">7</span></div>
+                  <div class="date"><span class="color-red">8</span></div>
+                  <div class="date">9</div>
+                  <div class="date">10</div>
+                  <div class="date">11</div>
+                  <div class="date">12</div>
+                  <div class="date">13</div>
+                  <div class="date"><span class="color-blue">14</span></div>
+                  <div class="date"><span class="color-red">15</span></div>
+                  <div class="date">16</div>
+                  <div class="date">17</div>
+                  <div class="date">18</div>
+                  <div class="date">19</div>
+                  <div class="date">20</div>
+                  <div class="date"><span class="color-blue">21</span></div>
+                  <div class="date"><span class="color-red">22</span></div>
+                  <div class="date">23</div>
+                  <div class="date">24</div>
+                  <div class="date">25</div>
+                  <div class="date">26</div>
+                  <div class="date">27</div>
+                  <div class="date"><span class="color-blue">28</span></div>
+                  <div class="date"><span class="color-red">29</span></div>
+                  <div class="date">30</div>
+                </div>
+              </div>
+              <div class="scroll-box">
+                <div class="diary-box">
+                  <div class="diary-date font-neo">2021.08.23 월 20:00</div>
+                  <div class="diary-text font-kyobohand">
+                    야자를 시작하는 날이었다. <i class="fab fa-angellist"></i>
+                    <br />
+                    야자를 하니까 시간이 잘 안 나서 HTML 공부를 잘 못 하였다..<br />
+                    시기가 이렇게 되어버려서 참 아쉽다..<br />
+                    혼자서 틈틈히 열심히 해야겠다는 생각이 든다. <br /> <br />
+                  </div>
+                </div>
+                <div class="diary-box">
+                  <div class="diary-date font-neo">2021.03.24 화 23:00</div>
+                  <div class="diary-text font-kyobohand">
+                    화요일이다..<br />
+                    시간이 너무 느리게 간다<br />
+                    이게 시간이냐..<br />
+                    언제 금요일 되는 거냐<br />
+                    하..<br />
+                  </div>
+                </div>
+
+                <div class="button-box">
+                  <button class="diary-button font-neo" onclick="getTextFile()">
+                    <i class="fas fa-lock"></i> 파카's 시크릿 다이어리
+                  </button>
+                </div>
+                <div class="diary-box" id="secret-box">
+                  <div class="diary-date">파카의 비밀 일기</div>
+                  <div class="diary-text font-kyobohand" id="secret-diary"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class= "menu-container">
+            <a href="./home.html">홈</a>
+            <a href="./photo.html">사진첩</a>
+            <a href="./diary.html">다이어리</a>
+            <a href="./guestbook.html">방명록</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function getTextFile() {
+      var input = document.createElement("input");
+      input.type = "file";
+      input.accept = "text/plain";
+      input.onchange = function (event) {
+      processFile(event.target.files[0]);
+    };
+      input.click();
+    }
+
+      function processFile(file) {
+      var reader = new FileReader();
+      reader.readAsText(file, "utf-8");
+
+      reader.onload = function () {
+      document.getElementById("secret-diary").innerText = reader.result;
+      document.getElementById("secret-box").style.display = "block";
+      };
+    }
+    </script>
+  </body>
+</html>
